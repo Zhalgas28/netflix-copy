@@ -1,0 +1,27 @@
+.header {
+    @apply fixed px-10 py-5 flex md:mr-6 flex-row items-center w-full bg-transparent z-10
+}
+
+.logoWrapper {
+    @apply cursor-pointer mr-2 md:mr-5 h-4 sm:h-6 lg:h-8
+}
+
+.navItems {
+    @apply hidden md:flex flex-row gap-4 flex-grow 
+}
+
+.item {
+    @apply text-white text-base lg:text-xl hover:text-red-700 transition duration-300 ease-in-out
+}
+
+.actions {
+    @apply flex flex-row items-center gap-5 text-white ml-auto
+}
+
+.actions__item {
+    @apply cursor-pointer hover:text-red-700 transition duration-300
+}
+
+.profile {
+    @apply flex items-center gap-2 cursor-pointer relative
+}

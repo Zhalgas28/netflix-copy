@@ -1,0 +1,15 @@
+.inputs {
+  @apply flex flex-col mb-9 gap-6
+}
+
+.inputs .item input {
+  @apply w-full px-3 py-3 border-none focus:outline-none rounded-lg text-white bg-slate-700 mb-1
+}
+
+.button {
+  @apply bg-red-600 hover:bg-red-800 transition px-2 py-2 w-full rounded-lg text-white text-lg flex justify-center items-center
+}
+
+.errorMessage {
+  @apply text-red-600 
+}
