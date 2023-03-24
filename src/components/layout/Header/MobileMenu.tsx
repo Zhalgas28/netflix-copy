@@ -11,11 +11,14 @@ const MobileMenu: FC<{visible: boolean}> = ({ visible }) => {
         <Link href={"/home"}>
           Home
         </Link>
-        <Link href={"/series"}>
-          Series
+        <Link href={"/cartoons"}>
+          Cartoons
         </Link>
         <Link href={"/movies"}>
           Movies
+        </Link>
+        <Link href={"/anime"}>
+          Anime
         </Link>
         <Link href={"/auth"}>
           Login

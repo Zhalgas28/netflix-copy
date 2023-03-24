@@ -1,6 +1,9 @@
+type filmsType = "movie" | "cartoon" | "anime"
+
 export interface IBaseQuery {
   limit?: number
   page?: number
+  type?: filmsType
   id?: string | string[] | undefined
 }
 

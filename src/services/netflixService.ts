@@ -1,8 +1,9 @@
-import { IBaseQuery } from './../types/IQuery';
-import { IMovie } from './../types/IMovie';
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { IBaseQuery } from "./../types/IQuery";
+import { IMovie } from "./../types/IMovie";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { IMovies } from "../types/IMovies";
 
-const API_KEY="B5ZN11S-1KKMYB3-NMKKNHY-5VWEB7F"
+const TOKEN = "B5ZN11S-1KKMYB3-NMKKNHY-5VWEB7F";
 
 export const netflixApi = createApi({
   reducerPath: "netflixApi",
@@ -10,10 +11,12 @@ export const netflixApi = createApi({
     baseUrl: "https://api.kinopoisk.dev/v1/",
   }),
   endpoints: (builder) => ({
-    getRandomMovie: builder.query<IMovie, void>({
-      query: () => `movie/random?token=${API_KEY}`
-    })
-  }) 
-})
+    getFilms: builder.query<IMovies, IBaseQuery>({
+      query: ({ limit, page, type }) => ({
+        url: `movie?limit=${limit}&page=${page}&type=${type}&token=${TOKEN}`,
+      }),
+    }),
+  }),
+});
 
-export const { useGetRandomMovieQuery } = netflixApi
+export const { useGetFilmsQuery } = netflixApi;

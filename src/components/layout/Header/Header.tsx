@@ -2,16 +2,34 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 import { BsSearch, BsBell } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccountMenu from "./AccountMenu";
 import MobileMenu from "./MobileMenu";
+import classNames from "classnames";
 
 const Header = () => {
   const [showAccountMenu, setShowAccountMenu] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+  const [showBackground, setShowBackground] = useState<boolean>(false)
+
+  useEffect(() => {
+    const handlerScroll = () => {
+      if (window.scrollY > 65) {
+        setShowBackground(true)
+      } else {
+        setShowBackground(false)
+      }
+    }
+
+    document.addEventListener("scroll",  handlerScroll)
+
+    return () => {
+      document.removeEventListener("scroll", handlerScroll)
+    }
+  }, [])
 
   return (
-    <header className={styles.header}>
+    <header className={classNames({[styles.header]: true}, {"bg-zinc-900": showBackground})}>
       <nav className={styles.logoWrapper}>
         <img src="/images/logo.png" className="h-full" />
       </nav>
@@ -19,11 +37,14 @@ const Header = () => {
         <Link className={styles.item} href={"/"}>
           Home
         </Link>
-        <Link className={styles.item} href={"/series"}>
-          Series
+        <Link className={styles.item} href={"/cartoons"}>
+          Cartoons
         </Link>
         <Link className={styles.item} href={"/movies"}>
           Movies
+        </Link>
+        <Link className={styles.item} href={"/anime"}>
+          Anime
         </Link>
         <Link className={styles.item} href={"/auth"}>
           Login
