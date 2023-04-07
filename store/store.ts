@@ -1,8 +1,13 @@
 import { netflixApi } from './../src/services/netflixService';
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
+import filterReducer from "./reducers/filterSlice"
+import paginatorReducer from "./reducers/paginatorSlice"
+
 
 const reducers = combineReducers({
-  [netflixApi.reducerPath]: netflixApi.reducer
+  [netflixApi.reducerPath]: netflixApi.reducer,
+  filter: filterReducer,
+  paginator: paginatorReducer
 })
 
 export const setupStore = () => {
