@@ -38,7 +38,11 @@ interface IVideos {
 }
 
 interface IGenre {
-  name: "string";
+  name: string;
+}
+
+interface ICountry {
+  name: string;
 }
 
 export interface IMovie {
@@ -51,9 +55,25 @@ export interface IMovie {
   shortDescription: string;
   slogan: string;
   rating: IRating;
-  ageRating: 16;
+  ageRating: number | string;
   logo: ILogo;
   poster: IPoster;
   videos: IVideos;
   genres: IGenre[];
+  countries: ICountry[];
+  year: number | string;
+  budget: {
+    value: number;
+    currency: string;
+  };
+  similarMovies: [
+    {
+      id: number;
+      name: string;
+      poster: {
+        url: "string";
+        previewUrl: "string";
+      };
+    }
+  ];
 }

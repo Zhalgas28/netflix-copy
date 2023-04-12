@@ -15,7 +15,7 @@ const Data: FC<{ data: IMovies | undefined }> = ({ data }) => {
               router.push("movies/" + film.id)
             }}
           >
-            <div className="h-56 w-auto object-cover">
+            <div className="h-56 w-auto object-cover rounded-md overflow-hidden">
               <img
                 src={film?.poster?.url}
                 alt={film.enName}
