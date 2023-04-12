@@ -15,5 +15,5 @@
 }
 
 .close {
-  @apply rounded-full flex items-center justify-center absolute top-2 right-2 cursor-pointer
+  @apply rounded-full flex items-center justify-center absolute top-2 right-2 cursor-pointer z-10
 }

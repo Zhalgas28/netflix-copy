@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import Image from "next/image";
 
 type PropsType = {
   film: IMovie | undefined;
@@ -27,11 +28,12 @@ const SimilarMovies: FC<PropsType> = ({ film }) => {
                   router.push(sim.id.toString());
                 }}
               >
-                <div className="h-56 w-auto object-cover rounded-md overflow-hidden">
-                  <img
-                    src={sim?.poster?.url}
-                    alt={sim?.name}
-                    className="h-56 w-full object-cover"
+                <div className="h-56 object-cover rounded-md overflow-hidden">
+                  <Image
+                    src={sim?.poster?.url || ""}
+                    alt={sim?.name || ""}
+                    height={224}
+                    width={149.3}
                   />
                 </div>
                 <div className="text-white line-clamp-2 text-lg">

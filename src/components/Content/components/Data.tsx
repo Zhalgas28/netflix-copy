@@ -1,4 +1,5 @@
 import { IMovies } from "@/src/types/IMovies";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { FC } from "react";
 
@@ -16,10 +17,11 @@ const Data: FC<{ data: IMovies | undefined }> = ({ data }) => {
             }}
           >
             <div className="h-56 w-auto object-cover rounded-md overflow-hidden">
-              <img
+              <Image
                 src={film?.poster?.url}
                 alt={film.enName}
-                className="h-56 w-full object-cover"
+                width={149}
+                height={224}
               />
             </div>
             <div className="text-white line-clamp-2 text-lg">{film.name}</div>

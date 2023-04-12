@@ -4,6 +4,7 @@ import styles from "./SliderMovieInfo.module.scss";
 import { BsFillPlayFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { AiOutlineClose } from "react-icons/ai"
+import Image from "next/image";
 
 type PropsType = {
   movie: ISliderMovie
@@ -16,11 +17,8 @@ const SliderMovieInfo: FC<PropsType> = ({ movie, setVisible }) => {
     <div className={styles.block}>
       <div className={styles.content} >
         <div className={styles.close} onClick={setVisible}><AiOutlineClose size={25}/></div>
-        <div className="h-[40%] w-full">
-          <img
-            src={movie.thumbnailUrl}
-            className="rounded-t-md h-full object-cover w-full"
-          />
+        <div className="h-[40%] w-full relative">
+          <Image src={movie.thumbnailUrl} fill alt="Image"/>
         </div>
         <div className={styles.title}>{movie.title}</div>
         <div className={styles.description}>{movie.description}</div>

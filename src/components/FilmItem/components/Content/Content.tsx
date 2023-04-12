@@ -1,4 +1,5 @@
 import { IMovie } from "@/src/types/IMovie";
+import Image from "next/image";
 import { FC } from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 import SimilarMovies from "../SimilarMovies/SimilarMovies";
@@ -9,10 +10,11 @@ const Content: FC<{ film: IMovie | undefined }> = ({ film }) => {
       <div className="flex flex-col justify-center sm:justify-start sm:flex-row gap-8">
         <div className="flex gap-2 flex-col justify-center">
           <div className="mr-12 w-[191.8px] rounded-md overflow-hidden mb-2">
-            <img
-              className="h-full w-full"
-              src={film?.poster?.url}
-              alt={film?.name}
+            <Image
+              src={film?.poster?.url || ""}
+              alt={film?.name || ""}
+              width={191.8}
+              height={287.7}
             />
           </div>
           <div className="flex gap-2">
