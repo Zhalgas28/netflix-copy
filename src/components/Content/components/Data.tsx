@@ -13,7 +13,13 @@ const Data: FC<{ data: IMovies | undefined }> = ({ data }) => {
             key={film.id}
             className="w-[149.4px] flex flex-col cursor-pointer"
             onClick={() => {
-              router.push("movies/" + film.id)
+              if (film.type === "movie") {
+                router.push("movies/" + film.id)
+              } else if (film.type === "anime") {
+                router.push("anime/" + film.id)
+              } else if ( film.type === "cartoon") {
+                router.push("cartoons/" + film.id)
+              }
             }}
           >
             <div className="h-56 w-auto object-cover rounded-md overflow-hidden">

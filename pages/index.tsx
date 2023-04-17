@@ -4,13 +4,12 @@ import { ISliderMovie, getRandomMovie } from "@/src/hooks/getRandomMovie";
 import { GetStaticProps, NextPage } from "next";
 
 export const getStaticProps: GetStaticProps = () => {
-  const randomIndex = Math.floor(Math.random() * 5);
-  const movie = getRandomMovie(randomIndex)
-
+  const movie = getRandomMovie()
   return {
     props: {
       movie
-    }
+    },
+    revalidate: 60
   }
 }
 
@@ -18,7 +17,7 @@ const HomePage: NextPage<{ movie: ISliderMovie }> = ({ movie }) => {
   return (
     <>
       <Meta title="Home" />
-      <Home movie={movie}/>
+      <Home movie={movie} />
     </>
   )
 }

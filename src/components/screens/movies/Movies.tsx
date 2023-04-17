@@ -1,6 +1,5 @@
 import { useAppSelector } from "@/src/hooks/redux";
 import { useGetFilmsQuery } from "@/src/services/netflixService";
-import { IMovie } from "@/src/types/IMovie";
 import { FC } from "react";
 import Content from "../../Content/Content";
 

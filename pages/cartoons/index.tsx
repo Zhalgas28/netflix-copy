@@ -5,7 +5,7 @@ import {  NextPage } from "next";
 const CartoonsPage: NextPage = () => {
   return (
     <>
-      <Meta title="Movies" />
+      <Meta title="Cartoons" />
       <Cartoons />
     </>
   )

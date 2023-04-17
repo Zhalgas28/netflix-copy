@@ -59,6 +59,11 @@ const movies: Array<ISliderMovie> = [
   },
 ];
 
-export const getRandomMovie = (idx: number) => {
-  return movies[idx];
+export const getRandomMovie = () => {
+  const randomIndex = Math.floor(Math.random() * 5);
+  return movies[randomIndex];
 };
+
+export const getMovie = (idx: number) => {
+  return movies[idx]
+}

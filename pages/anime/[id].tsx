@@ -2,13 +2,13 @@ import FilmItem from "@/src/components/FilmItem/Filmitem";
 import {  NextPage } from "next";
 import Meta from "@/src/components/Meta/Meta";
 
-const MoviePage: NextPage = () => {
+const AnimePage: NextPage = () => {
   return (
     <>
-      <Meta title={"Movie"} />
+      <Meta title={"Anime"} />
       <FilmItem />
     </>
   );
 };
 
-export default MoviePage;
+export default AnimePage;
