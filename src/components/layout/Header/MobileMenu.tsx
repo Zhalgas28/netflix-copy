@@ -8,7 +8,7 @@ const MobileMenu: FC<{visible: boolean}> = ({ visible }) => {
 
     return (
       <div className="absolute right-0 top-10 bg-black xs:w-36 text-white flex py-3 px-8 text-lg flex-col gap-4">
-        <Link href={"/home"}>
+        <Link href={"/"}>
           Home
         </Link>
         <Link href={"/cartoons"}>
