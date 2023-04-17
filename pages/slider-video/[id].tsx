@@ -9,7 +9,7 @@ const Video = () => {
 
   return (
     <>
-      <Meta title={movie.title}/>
+      <Meta title={movie?.title}/>
       <div className="w-screen h-screen bg-black z-80 relative">
         <video
           src={movie?.videoUrl}
