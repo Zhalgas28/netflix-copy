@@ -6,11 +6,16 @@ import { useEffect, useState } from "react";
 import AccountMenu from "./AccountMenu";
 import MobileMenu from "./MobileMenu";
 import classNames from "classnames";
+import Image from "next/image";
 
 const Header = () => {
   const [showAccountMenu, setShowAccountMenu] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
   const [showBackground, setShowBackground] = useState<boolean>(false)
+
+  const hideVisible = () => {
+    setShowMobileMenu(false)
+  }
 
   useEffect(() => {
     const handlerScroll = () => {
@@ -31,7 +36,7 @@ const Header = () => {
   return (
     <header className={classNames({[styles.header]: true}, {"bg-zinc-900": showBackground})}>
       <nav className={styles.logoWrapper}>
-        <img src="/images/logo.png" className="h-full" />
+        <Image src="/images/logo.png" width={118.3} height={32} alt="logo"/>
       </nav>
       <div className={styles.navItems}>
         <Link className={styles.item} href={"/"}>
@@ -58,7 +63,7 @@ const Header = () => {
           }`}
           onClick={() => setShowMobileMenu((prev) => !prev)}
         />
-        <MobileMenu visible={showMobileMenu} />
+        <MobileMenu setVisible={hideVisible} visible={showMobileMenu} />
       </div>
       <div className={styles.actions}>
         <div className={styles.actions__item}>
@@ -71,7 +76,7 @@ const Header = () => {
           className={styles.profile}
           onClick={() => setShowAccountMenu((prev) => !prev)}
         >
-          <img src="/images/default-blue.png" className=" w-7 md:w-10 ml-3" />
+          <Image src="/images/default-blue.png" alt="profile" width={32} height={32} className="ml-3" />
           <FiChevronDown
             size={20}
             className={`transition ${

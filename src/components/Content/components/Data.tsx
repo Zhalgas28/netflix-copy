@@ -25,7 +25,7 @@ const Data: FC<{ data: IMovies | undefined }> = ({ data }) => {
             <div className="h-56 w-auto object-cover rounded-md overflow-hidden">
               <Image
                 src={film?.poster?.url}
-                alt={film.enName}
+                alt={film?.name}
                 width={149}
                 height={224}
               />

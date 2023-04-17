@@ -19,12 +19,10 @@ const Content: FC<PropsType> = ({ data, isFetching, isLoading, title ="Movies" }
   
   useEffect(() => {
     dispatch(resetFilters())
-  }, [])
+  }, [dispatch])
   
   if (isLoading || isFetching) {
-    return <div className="absolute top-[48%] left-[48%] ">
-      <Loader />
-    </div>
+    return <Loader />
   }
 
   return <div className="pt-24 pb-10 px-10 flex flex-col items-center">
