@@ -5,6 +5,7 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import { AiOutlineClose } from "react-icons/ai"
 import Image from "next/image";
+import Loader from "../../assets/Loader";
 
 type PropsType = {
   movie: ISliderMovie

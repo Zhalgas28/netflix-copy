@@ -5,6 +5,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import { useRouter } from "next/router";
 import SliderMovieInfo from "./SliderMovieInfo/SliderMovieInfo";
+import Loader from "../assets/Loader";
 
 const Billboard: FC<{ movie: ISliderMovie }> = ({ movie }) => {
   const router = useRouter()
@@ -18,6 +19,7 @@ const Billboard: FC<{ movie: ISliderMovie }> = ({ movie }) => {
         autoPlay
         loop
         muted
+        playsInline
       ></video>
       <div className={styles.content}>
         <h2 className={styles.title}>{movie.title}</h2>

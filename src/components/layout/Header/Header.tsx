@@ -19,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     const handlerScroll = () => {
-      if (window.scrollY > 65) {
+      if (window.scrollY > 45) {
         setShowBackground(true)
       } else {
         setShowBackground(false)
@@ -33,11 +33,17 @@ const Header = () => {
     }
   }, [])
 
+  // width={118.3} height={32}
+
   return (
     <header className={classNames({[styles.header]: true}, {"bg-zinc-900": showBackground})}>
-      <nav className={styles.logoWrapper}>
-        <Image src="/images/logo.png" width={118.3} height={32} alt="logo"/>
-      </nav>
+      <div className="relative cursor-pointer mr-2 md:mr-5 md:w-[118.3px] md:h-[32px] w-[90px] h-[24.3px]">
+        <Image 
+          src="/images/logo.png" 
+          alt="logo"
+          fill
+        />
+      </div>
       <div className={styles.navItems}>
         <Link className={styles.item} href={"/"}>
           Home
@@ -76,7 +82,7 @@ const Header = () => {
           className={styles.profile}
           onClick={() => setShowAccountMenu((prev) => !prev)}
         >
-          <Image src="/images/default-blue.png" alt="profile" width={32} height={32} className="ml-3" />
+          <Image src="/images/default-blue.png" alt="profile" width={36} height={36} className="ml-3" />
           <FiChevronDown
             size={20}
             className={`transition ${

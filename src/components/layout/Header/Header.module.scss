@@ -2,10 +2,6 @@
     @apply fixed px-10 py-5 flex md:mr-6 flex-row items-center w-full bg-transparent z-10
 }
 
-.logoWrapper {
-    @apply cursor-pointer mr-2 md:mr-5 h-4 sm:h-6 lg:h-8
-}
-
 .navItems {
     @apply hidden md:flex flex-row gap-4 flex-grow 
 }

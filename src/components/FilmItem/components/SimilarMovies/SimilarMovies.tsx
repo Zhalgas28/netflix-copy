@@ -15,8 +15,29 @@ const SimilarMovies: FC<PropsType> = ({ film }) => {
     <div className="mt-5">
       <h3 className="text-white text-2xl mb-4">Похожие фильмы</h3>
       <Swiper
-        slidesPerView={7}
-        spaceBetween={10}
+        slidesPerView={1}
+        breakpoints={{
+          410: {
+            slidesPerView: 2,
+            spaceBetween: 5
+          },
+          587: {
+            slidesPerView: 3,
+            spaceBetween: 7
+          },
+          790: {
+            slidesPerView: 4,
+            spaceBetween: 10
+          },
+          1090: {
+            slidesPerView: 7,
+            spaceBetween: 10
+          },
+          1450: {
+            slidesPerView: 9,
+            spaceBetween: 15
+          }
+        }}
         className="w-full flex justify-center"
       >
         {film?.similarMovies.map((sim) => {
