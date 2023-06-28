@@ -9,11 +9,10 @@ export const getStaticProps: GetStaticProps = () => {
     props: {
       movie
     },
-    revalidate: 60
   }
 }
 
-const HomePage: NextPage<{ movie: ISliderMovie }> = ({ movie }) => {
+const HomePage: NextPage<{ movie: ISliderMovie | undefined }> = ({ movie }) => {
   return (
     <>
       <Meta title="Home" />

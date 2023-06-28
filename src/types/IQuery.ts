@@ -4,6 +4,7 @@ export interface IBaseQuery {
   limit?: number
   page?: number
   type?: filmsType
+  search?: string
   id?: string | string[] | undefined
 }
 

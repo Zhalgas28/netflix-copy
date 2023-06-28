@@ -7,11 +7,13 @@ import AccountMenu from "./AccountMenu";
 import MobileMenu from "./MobileMenu";
 import classNames from "classnames";
 import Image from "next/image";
+import Search from "../../screens/search/Search";
 
 const Header = () => {
   const [showAccountMenu, setShowAccountMenu] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
-  const [showBackground, setShowBackground] = useState<boolean>(false)
+  const [showBackground, setShowBackground] = useState<boolean>(false);
+  const [showSearch, setShowSearch] = useState<boolean>(false);
 
   const hideVisible = () => {
     setShowMobileMenu(false)
@@ -67,16 +69,23 @@ const Header = () => {
           className={`md:hidden text-white transition ${
             showMobileMenu ? "rotate-180" : "rotate-0"
           }`}
-          onClick={() => setShowMobileMenu((prev) => !prev)}
+          onClick={() => {
+            setShowMobileMenu((prev) => !prev)
+            setShowSearch(false)
+          }}
         />
         <MobileMenu setVisible={hideVisible} visible={showMobileMenu} />
       </div>
       <div className={styles.actions}>
         <div className={styles.actions__item}>
-          <BsSearch size={18} />
+          <BsSearch size={18} className={styles.actions__logo} onClick={() => {
+            setShowSearch(prev => !prev)
+            setShowMobileMenu(false)
+          }}  />
+          <Search visible={showSearch} />
         </div>
         <div className={styles.actions__item}>
-          <BsBell size={18} />
+          <BsBell size={18} className={styles.actions__logo} />
         </div>
         <div
           className={styles.profile}
