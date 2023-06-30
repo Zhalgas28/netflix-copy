@@ -79,10 +79,13 @@ const Header = () => {
       <div className={styles.actions}>
         <div className={styles.actions__item}>
           <BsSearch size={18} className={styles.actions__logo} onClick={() => {
-            setShowSearch(prev => !prev)
+            setShowSearch(true)
             setShowMobileMenu(false)
+            setShowAccountMenu(false)
           }}  />
-          <Search visible={showSearch} />
+          {showSearch && 
+            <Search onClose={() => setShowSearch(false)} />
+          }
         </div>
         <div className={styles.actions__item}>
           <BsBell size={18} className={styles.actions__logo} />

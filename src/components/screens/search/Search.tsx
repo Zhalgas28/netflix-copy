@@ -1,83 +1,38 @@
 import { useSearchFilmsQuery } from "@/src/services/netflixService";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import { FC, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai"
+import { useDebounce } from "@/src/hooks/useDebounce";
+import SearchList from "./SearchList";
 
 interface ISearchProps {
-  visible: boolean;
+  onClose: () => void
 }
 
-const Search: FC<ISearchProps> = ({ visible }) => {
+const Search: FC<ISearchProps> = ({ onClose }) => {
   const [search, setSearch] = useState<string>("");
-  const { data } = useSearchFilmsQuery({ limit: 5, search: search }, {
-    skip: search.length < 3
+  const debouncedSearch = useDebounce<string>(search)
+  const { data, isFetching, isLoading } = useSearchFilmsQuery({ limit: 20, search: debouncedSearch }, {
+    skip: search.length === 1
   })
-
-
-  if (!visible) {
-    return null;
-  }
+  
 
   return (
-    <div className="bg-zinc-800 p-5 w-[250px] sm:w-[400px] rounded absolute top-10 right-[-100px] xs:right-[-40px]">
-      <input
-        className="bg-white px-2 py-1 text-black w-full focus:outline-none rounded-md"
-        placeholder="search..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <div className="flex flex-col py-4 gap-3">
-        {data?.docs.map((film) => {
-          return <FilmItem film={film} key={film.id} />
-        })}
+    <div className="bg-black opacity-95 fixed left-0 top-0 h-full w-full overflow-auto z-50 justify-center">
+      <div className="absolute top-10 right-6 sm:right-14" onClick={onClose}>
+        <AiOutlineClose size={30} className="text-gray-300 hover:opacity-50 transition" />
       </div>
-    </div>
-  );
-};
-
-interface IFilmItemProps {
-  film: {
-    id: number
-    name: string
-    alternativeName: string
-    enName: string
-    names: string[]
-    type: string
-    year: number
-    description: string
-    shortDescription: string
-    logo: string
-    poster: string
-    backdrop: string
-    rating: number
-    votes: number
-    movieLength: number
-    genres: string[]
-    countries: string[]
-    releaseYears: number[]
-  }
-
-}
-
-const FilmItem: FC<IFilmItemProps> = ({ film }) => {
-  const router = useRouter()
-  return (
-    <div className="flex flex-row gap-2" onClick={() => {
-      if (film.type === "movie") {
-        router.push("movies/" + film.id)
-      } else if (film.type === "anime") {
-        router.push("anime/" + film.id)
-      } else if (film.type === "cartoon") {
-        router.push("cartoons/" + film.id)
-      }
-    }}>
-      <div>
-        <Image src={film.poster || ""} width={40} height={60} alt="" />
+      <div className="my-[100px] mx-auto w-[300px] sm:w-[500px] md:w-[600px] lg:w-[800px]">
+        <h2 className="text-white font-bold text-5xl">Поиск</h2>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => {setSearch(e.target.value)}}
+          placeholder="Фильмы, аниме, мультфильмы" 
+          className="p-[10px] w-full bg-white outline-none text-black rounded-2xl mt-7"
+        />
+        <SearchList data={data} onClose={onClose} isFetching={isFetching} isLoading={isLoading} />
       </div>
-      <div className="font-bold text-lg">
-        {film.name}
-      </div>
-    </div>
+    </div>  
   )
 };
 
