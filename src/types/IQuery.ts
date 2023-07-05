@@ -12,6 +12,7 @@ export interface IFilters {
   genre: string | string[]
   year: string
   rating: string
+  sort: string
 }
 
 export interface IQuery extends IBaseQuery {

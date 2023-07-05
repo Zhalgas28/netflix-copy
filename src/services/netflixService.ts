@@ -16,7 +16,7 @@ export const netflixApi = createApi({
         const genre =
           filters.genre !== "" ? `genres.name=${filters.genre}&` : "";
         return {
-          url: `v1/movie?${genre}limit=${limit}&page=${page}&type=${type}&rating.imdb=${filters.rating}&year=${filters.year}&name=!null&poster.url=!null&token=${TOKEN}`,
+          url: `v1/movie?${genre}limit=${limit}&page=${page}&type=${type}&sortField=${filters.sort}&rating.imdb=${filters.rating}&year=${filters.year}&name=!null&poster.url=!null&token=${TOKEN}`,
         };
       },
     }),

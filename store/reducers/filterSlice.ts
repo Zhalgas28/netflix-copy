@@ -2,9 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
   filters: {
-    year: "1965-2023",
     genre: "",
-    rating: "1-10"
+    rating: "1-10",
+    year: "1960-2030",
+    sort: ""
   }
 }
 
@@ -21,12 +22,15 @@ const filterSlice = createSlice({
     setRating: (state, action: PayloadAction<string>) => {
       state.filters.rating = action.payload
     },
+    setSort: (state, action: PayloadAction<string>) => {
+      state.filters.sort = action.payload
+    },
     resetFilters: (state) => {
       state.filters = initialState.filters
     }
   }
 })
 
-export const { setGenre, setRating, setYear, resetFilters } = filterSlice.actions
+export const { setGenre, setRating, setYear, setSort, resetFilters } = filterSlice.actions
 
 export default filterSlice.reducer

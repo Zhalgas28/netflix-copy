@@ -63,7 +63,7 @@ const Content: FC<{ film: IMovie | undefined }> = ({ film }) => {
               <span className="text-white text-xl">{film?.ageRating}+</span>
             </div>
             <a
-              href={film?.videos.trailers[0].url || ""}
+              href={film?.videos?.trailers[0]?.url || ""}
               target="_blank"
               className="flex items-center cursor-pointer bg-red-700 py-2 px-4 rounded-lg hover:opacity-70 transition"
             >
