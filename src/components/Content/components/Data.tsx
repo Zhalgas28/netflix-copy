@@ -24,7 +24,7 @@ const Data: FC<DataProps> = ({ data, isFetching, isLoading }) => {
   }
 
   return (
-    <div className="flex flex-wrap flex-row gap-5 justify-evenly items-start">
+    <div className="flex flex-wrap flex-row gap-5 justify-center sm:justify-between items-start">
       {data?.docs.map((film) => {
         return (
           <div

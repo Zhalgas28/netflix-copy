@@ -48,7 +48,7 @@ const MobileFilter: FC<MobileFilterProps> = ({ isOpenMFilter, onClose }) => {
   return (
     <form className="fixed w-screen h-screen overflow-y-auto overflow-x-hidden bg-black bg-opacity-95 left-0 top-0 z-10" onSubmit={handleSubmit(onSubmit)}>
       <div className="p-[30px] sm:py-[50px] sm:px-[80px]">
-        <div className="flex justify-between mb-10">
+        <div className="flex justify-between items-center mb-10">
           <div className="relative cursor-pointer mr-2 md:mr-5 md:w-[118.3px] md:h-[32px] w-[90px] h-[24.3px]">
             <Image 
               src="/images/logo.png" 
