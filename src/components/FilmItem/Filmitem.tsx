@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import Loader from "../assets/Loader";
 import Content from "./components/Content/Content";
+import ContentV2 from "./components/Content/ContentV2";
 
 const FilmItem: FC = () => {
   const router = useRouter()
@@ -12,9 +13,7 @@ const FilmItem: FC = () => {
   if (isFetching || isLoading) {
     return <Loader />
   }
-  return <div className="pt-20 pb-10 sm:pt-32 text-white px-10">
-    <Content film={film} />
-  </div>
+  return <ContentV2 film={film} />
 };
 
 export default FilmItem;

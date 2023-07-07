@@ -11,7 +11,7 @@ const Cartoons = () => {
     filters: filter.filters
   });
 
-  return <Content title="Cartoons" data={data} isFetching={isFetching} isLoading={isLoading} />;
+  return <Content title="Мультфильмы" data={data} isFetching={isFetching} isLoading={isLoading} />;
 };
 
 export default Cartoons;

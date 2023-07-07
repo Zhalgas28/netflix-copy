@@ -12,7 +12,7 @@ const Anime = () => {
     filters: filter.filters
   })
   
-  return <Content title="Anime" data={data} isLoading={isLoading} isFetching={isFetching} />;
+  return <Content title="Аниме" data={data} isLoading={isLoading} isFetching={isFetching} />;
 };
 
 export default Anime;

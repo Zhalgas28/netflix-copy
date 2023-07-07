@@ -119,8 +119,4 @@ export const genres = [
     name: "церемония",
     slug: "ceremoniya",
   },
-  {
-    name: "для взрослых",
-    slug: "dlya-vzroslyh"
-  }
 ];

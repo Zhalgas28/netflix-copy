@@ -9,6 +9,13 @@ import classNames from "classnames";
 import Image from "next/image";
 import Search from "../../screens/search/Search";
 
+const routes = [
+  { label: "Главная", href: "/" },
+  { label: "Фильмы", href: "/movies" },
+  { label: "Мультфильмы", href: "/cartoons" },
+  { label: "Аниме", href: "/anime" },
+]
+
 const Header = () => {
   const [showAccountMenu, setShowAccountMenu] = useState<boolean>(false);
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
@@ -47,21 +54,11 @@ const Header = () => {
         />
       </div>
       <div className={styles.navItems}>
-        <Link className={styles.item} href={"/"}>
-          Home
-        </Link>
-        <Link className={styles.item} href={"/cartoons"}>
-          Cartoons
-        </Link>
-        <Link className={styles.item} href={"/movies"}>
-          Movies
-        </Link>
-        <Link className={styles.item} href={"/anime"}>
-          Anime
-        </Link>
-        <Link className={styles.item} href={"/auth"}>
-          Login
-        </Link>
+        {routes.map(route => {
+          return <Link href={route.href} className={styles.item} key={route.label}>
+            {route.label}
+          </Link>
+        })}
       </div>
       <div className="relative">
         <FiChevronDown

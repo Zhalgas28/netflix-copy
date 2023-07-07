@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FC } from "react";
 
 const AccountMenu: FC<{visible: boolean}> = ({visible}) => {
@@ -6,14 +7,8 @@ const AccountMenu: FC<{visible: boolean}> = ({visible}) => {
     }
     
     return (
-      <div className="bg-black w-56 absolute right-0 top-16 border-gray-700 py-3 px-3 flex flex-col gap-3">
-        <div className="align-center">
-          This is your username
-        </div>
-        <hr />
-        <div className="align-center">
-          Log Out
-        </div>
+      <div className="bg-black rounded-md w-56 absolute right-0 top-16 border-gray-700 py-3 px-3 flex flex-col gap-3">
+        <Link href={"auth"} className="hover:text-red-700 transition text-center">Войти</Link>
       </div>
     )
 };
