@@ -2,7 +2,6 @@ import { useGetFilmQuery } from "@/src/services/netflixService";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import Loader from "../assets/Loader";
-import Content from "./components/Content/Content";
 import ContentV2 from "./components/Content/ContentV2";
 
 const FilmItem: FC = () => {

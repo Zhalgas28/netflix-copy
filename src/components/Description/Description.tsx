@@ -11,7 +11,7 @@ const Description: FC<DescriptionProps> = ({ text, className }) => {
   const [ isShort, setIsShort ] = useState<boolean>(true)
   
   const words = text?.split(" ")
-  const shortDescription = words?.splice(0, 20).join(" ")
+  const shortDescription = words?.splice(0, 17).join(" ")
   const description = isShort ? shortDescription : text
 
   return (
