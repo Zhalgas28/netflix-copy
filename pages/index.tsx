@@ -5,7 +5,7 @@ import { GetStaticProps, NextPage } from "next";
 
 export const getStaticProps: GetStaticProps = () => {
   const movie = getRandomMovie()
-  const data = JSON.stringify(movie)
+  const data = JSON.parse(JSON.stringify(movie))
   if (movie === null) {
     return {
       notFound: true
