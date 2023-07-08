@@ -1,7 +1,9 @@
+import Slider from "@/src/components/slider/Slider";
 import { IMovie } from "@/src/types/IMovie";
 import Image from "next/image";
 import { FC } from "react";
 import Description from "../../../Description/Description";
+import SimilarMovies from "../SimilarMovies/SimilarMovies";
 
 interface ContentProps {
   film: IMovie | undefined
@@ -27,7 +29,7 @@ const ContentV2: FC<ContentProps> = ({ film }) => {
           <h1 className="text-white text-4xl font-semibold">
             {film?.name || film?.enName}
           </h1>
-          <div className="flex flex-row gap-4 text-gray-500 font-semibold text-lg">
+          <div className="flex flex-row flex-wrap gap-y-2 gap-x-4 text-gray-500 font-semibold text-lg">
             <div className="bg-green-700 text-white px-2 font-semibold rounded-md">
               {film?.rating.kp.toFixed(1)}
             </div>
@@ -37,11 +39,13 @@ const ContentV2: FC<ContentProps> = ({ film }) => {
             <span>{film?.countries[0].name}</span>
           </div>
           <span className="text-lg max-w-[600px] opacity-90">{film?.shortDescription}</span>
+          {film?.budget && (
           <span className="text-lg text-gray-500">Бюджет:
             <span className="text-white ml-2">
               {film?.budget.value.toLocaleString()}{film?.budget.currency}
             </span>
           </span>
+          )}
           <div className="flex flex-row gap-4">
             <button className="flex justify-center items-center px-4 py-2 bg-red-600 hover:opacity-50 rounded-lg transition font-semibold text-lg">
               Смотреть фильм
@@ -53,6 +57,8 @@ const ContentV2: FC<ContentProps> = ({ film }) => {
         </div>
       </div>
       <Description text={film?.description} className="mt-10" />
+      <h2 className="text-white font-semibold mb-5 mt-10 text-3xl ">Похожие фильмы</h2>
+      <Slider movie={film}/>
     </div>
   )
 };

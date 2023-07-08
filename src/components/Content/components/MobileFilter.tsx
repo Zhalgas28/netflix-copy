@@ -62,7 +62,7 @@ const MobileFilter: FC<MobileFilterProps> = ({ isOpenMFilter, onClose }) => {
         </div>
         <div className="flex flex-col gap-4">
           <h2 className="text-white font-bold text-3xl mb-5">Фильтры</h2>
-          <select {...register("genre")} className="bg-zinc-800 w-full font-bold text-white py-2 px-5 rounded-md">
+          <select {...register("genre")} className="bg-zinc-800 w-full font-semibold text-white py-2 px-5 rounded-md">
             <option value="">
               Все жанры
             </option>
@@ -74,7 +74,7 @@ const MobileFilter: FC<MobileFilterProps> = ({ isOpenMFilter, onClose }) => {
               );
             })}
           </select>
-          <select {...register("rating")} className="bg-zinc-800 w-full font-bold text-white py-2 px-5 rounded-md">
+          <select {...register("rating")} className="bg-zinc-800 w-full font-semibold text-white py-2 px-5 rounded-md">
             {ratings.map(rating => {
               return (
                 <option value={rating.value} key={rating.value}>
@@ -83,7 +83,7 @@ const MobileFilter: FC<MobileFilterProps> = ({ isOpenMFilter, onClose }) => {
               )
             })}
           </select>
-          <select {...register("year")} className="bg-zinc-800 w-full font-bold text-white py-2 px-5 rounded-md">
+          <select {...register("year")} className="bg-zinc-800 w-full font-semibold text-white py-2 px-5 rounded-md">
             <option value="1960-2030">
               Все годы
             </option>
@@ -95,14 +95,14 @@ const MobileFilter: FC<MobileFilterProps> = ({ isOpenMFilter, onClose }) => {
               )
             })}
           </select>
-          <select {...register("sort")} className="bg-zinc-800 w-full font-bold text-white py-2 px-5 rounded-md">
+          <select {...register("sort")} className="bg-zinc-800 w-full font-semibold text-white py-2 px-5 rounded-md">
             {sortTypes.map(sortType => {
               return <option value={sortType.value} key={sortType.value}>
                 {sortType.name}
               </option>
             })}
           </select>
-          <button type="submit" className="flex items-center w-full text-base font-bold mt-4 md:text-xl justify-center py-2 px-3 bg-red-700 hover:opacity-70 transition rounded-lg text-white">
+          <button type="submit" className="flex items-center w-full text-base font-semibold mt-4 md:text-xl justify-center py-2 px-3 bg-red-700 hover:opacity-70 transition rounded-lg text-white">
             Показать результаты
           </button>
         </div>

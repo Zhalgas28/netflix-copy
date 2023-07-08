@@ -35,7 +35,7 @@ const Filter = () => {
   return (
     <form className="hidden lg:flex w-full mt-5 justify-between items-center mb-10" onChange={handleSubmit(onChange)}>
       <div className="flex gap-x-2 items-center">
-        <select {...register("genre")} className="bg-zinc-800 font-bold text-white py-2 px-5 rounded-md">
+        <select {...register("genre")} className="bg-zinc-800 font-semibold text-white py-2 px-5 rounded-md">
           <option value="">
             Все жанры
           </option>
@@ -47,7 +47,7 @@ const Filter = () => {
             );
           })}
         </select>
-        <select {...register("rating")} className="bg-zinc-800 font-bold text-white py-2 px-5 rounded-md">
+        <select {...register("rating")} className="bg-zinc-800 font-semibold text-white py-2 px-5 rounded-md">
           {ratings.map(rating => {
             return (
               <option value={rating.value} key={rating.value}>
@@ -56,7 +56,7 @@ const Filter = () => {
             )
           })}
         </select>
-        <select {...register("year")} className="bg-zinc-800 font-bold text-white py-2 px-5 rounded-md">
+        <select {...register("year")} className="bg-zinc-800 font-semibold text-white py-2 px-5 rounded-md">
           <option value="1960-2030">
             Все годы
           </option>
@@ -70,7 +70,7 @@ const Filter = () => {
         </select>
       </div>
       <div>
-      <select {...register("sort")} className="bg-zinc-800 font-bold text-white py-2 px-5 rounded-md">
+      <select {...register("sort")} className="bg-zinc-800 font-semibold text-white py-2 px-5 rounded-md">
         {sortTypes.map(sortType => {
           return <option value={sortType.value} key={sortType.value}>
             {sortType.name}
