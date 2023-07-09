@@ -2,7 +2,7 @@ import { IMovies } from "@/src/types/IMovies";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import Spinner from "../../assets/Spinner";
+import Loader from "../../assets/Loader";
 
 interface DataProps {
   data: IMovies | undefined
@@ -14,9 +14,7 @@ const Data: FC<DataProps> = ({ data, isFetching, isLoading }) => {
   const router = useRouter()
 
   if (isLoading || isFetching) {
-    return <div className="flex items-center justify-center mt-10">
-      <Spinner />
-    </div>
+    return <Loader />
   }
 
   if (data?.docs.length === 0) {
@@ -24,12 +22,12 @@ const Data: FC<DataProps> = ({ data, isFetching, isLoading }) => {
   }
 
   return (
-    <div className="flex flex-wrap flex-row gap-5 justify-center sm:justify-between items-start">
+    <div className="flex flex-wrap flex-row gap-6 md:gap-4 justify-center sm:justify-between items-start">
       {data?.docs.map((film) => {
         return (
           <div
             key={film.id}
-            className="w-[149.4px] flex flex-col cursor-pointer md:hover:scale-110 transition group"
+            className="w-[133px] md:w-[149px] flex flex-col cursor-pointer md:hover:scale-110 transition group"
             onClick={() => {
               if (film.type === "movie") {
                 router.push("movies/" + film.id)
@@ -40,7 +38,7 @@ const Data: FC<DataProps> = ({ data, isFetching, isLoading }) => {
               }
             }}
           >
-            <div className="h-56 w-auto object-cover rounded-md overflow-hidden">
+            <div className="h-[200px] md:h-[224px] w-auto object-cover rounded-md overflow-hidden">
               <Image
                 src={film?.poster?.url}
                 alt={film?.name}
@@ -50,7 +48,7 @@ const Data: FC<DataProps> = ({ data, isFetching, isLoading }) => {
             </div>
             <div className="text-white line-clamp-2 text-lg font-semibold group-hover:text-zinc-400 transition">{film.name}</div>
             <div className="flex flex-row flex-wrap gap-1">
-              {film.genres.map((genre, idx) => (
+              {film.genres.slice(0, 2).map((genre, idx) => (
                 <span key={idx} className="text-gray-500 break-words text-sm">
                   {genre.name}
                 </span>

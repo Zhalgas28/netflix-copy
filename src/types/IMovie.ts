@@ -76,4 +76,12 @@ export interface IMovie {
       };
     }
   ];
+  movieLength: number;
+  facts: [
+    {
+      value: string;
+      type: string;
+      spoiler: true;
+    }
+  ];
 }
