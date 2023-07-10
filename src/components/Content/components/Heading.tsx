@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const Heading: FC<{title: string}> = ({ title }) => {
     return (
-      <h1 className="text-5xl text-white font-semibold">
+      <h1 className="text-3xl md:text-5xl text-white font-semibold">
         {title}
       </h1>
     )

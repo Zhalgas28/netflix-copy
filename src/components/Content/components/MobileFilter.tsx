@@ -4,8 +4,8 @@ import { genres } from "@/src/data/moviesGenres";
 import { ratings } from "@/src/data/moviesRatings";
 import { years } from "@/src/data/moviesYears";
 import { sortTypes } from "@/src/data/moviesSortTypes";
-import { setGenre, setRating, setSort, setYear } from "@/store/reducers/filterSlice";
-import { FC } from "react";
+import { resetFilters, setGenre, setRating, setSort, setYear } from "@/store/reducers/filterSlice";
+import { FC, useEffect } from "react";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai"
 
@@ -30,8 +30,13 @@ const MobileFilter: FC<MobileFilterProps> = ({ isOpenMFilter, onClose }) => {
     register,
     handleSubmit
   } = useForm<FormValuesType>({
-    defaultValues: filters
+    defaultValues: filters,
+    values: filters
   })
+
+  useEffect(() => {
+    dispatch(resetFilters())
+  }, [dispatch])
 
   const onSubmit = (v: FormValuesType) => {
     onClose()

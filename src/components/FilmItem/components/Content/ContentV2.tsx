@@ -12,7 +12,7 @@ interface ContentProps {
 const ContentV2: FC<ContentProps> = ({ film }) => {
   return (
     <div className="px-10 pb-10 pt-20 sm:pt-32 text-white">
-      <div className="flex flex-col items-center justify-center md:justify-start md:flex-row gap-8">
+      <div className="flex flex-col justify-center md:justify-start md:flex-row gap-8">
         <div className="mr-12 w-[192px] rounded-md overflow-hidden mb-2">
           <Image
             src={film?.poster.url || ""}
@@ -29,7 +29,7 @@ const ContentV2: FC<ContentProps> = ({ film }) => {
           </h1>
           <div className="flex flex-row flex-wrap gap-y-2 gap-x-2 sm:gap-x-4 text-gray-500 font-semibold text-base sm:text-lg">
             <div className="bg-green-700 text-white px-2 font-semibold rounded-md">
-              {film?.rating.kp.toFixed(1)}
+              {film?.rating.kp.toFixed(1) || film?.rating.imdb.toFixed(1) || 5.0}
             </div>
             <span>{film?.year}</span>
             <span>{film?.genres[0].name}</span>
@@ -37,10 +37,17 @@ const ContentV2: FC<ContentProps> = ({ film }) => {
             <span>{film?.countries[0].name}</span>
           </div>
           <span className="text-lg max-w-[600px] opacity-90">{film?.shortDescription}</span>
-          {film?.budget && (
+          {(film?.budget.value && film?.budget.currency) && (
             <span className="text-lg text-gray-500">Бюджет:
               <span className="text-white ml-2">
                 {film?.budget.value.toLocaleString()}{film?.budget.currency}
+              </span>
+            </span>
+          )}
+          {(film?.movieLength ) && (
+            <span className="text-lg text-gray-500">Длительность:
+              <span className="text-white ml-2">
+                {film?.movieLength} минут
               </span>
             </span>
           )}

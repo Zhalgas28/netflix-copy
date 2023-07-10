@@ -4,8 +4,8 @@ import { genres } from "@/src/data/moviesGenres";
 import { ratings } from "@/src/data/moviesRatings";
 import { years } from "@/src/data/moviesYears";
 import { sortTypes } from "@/src/data/moviesSortTypes";
-import { setGenre, setRating, setSort, setYear } from "@/store/reducers/filterSlice";
-import { memo } from "react";
+import { resetFilters, setGenre, setRating, setSort, setYear } from "@/store/reducers/filterSlice";
+import { memo, useEffect } from "react";
 
 interface FormValuesType {
   genre: string
@@ -18,11 +18,17 @@ const Filter = () => {
   const { filters } = useAppSelector(state => state.filter)
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    dispatch(resetFilters())
+  }, [dispatch])
+
   const {
     register,
-    handleSubmit
+    handleSubmit,
+    reset
   } = useForm<FormValuesType>({
-    defaultValues: filters
+    defaultValues: filters,
+    values: filters
   })
 
   const onChange = (v: FormValuesType) => {

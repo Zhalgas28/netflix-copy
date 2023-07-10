@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import Loader from "../../assets/Loader";
+import Spinner from "../../assets/Spinner";
 
 interface DataProps {
   data: IMovies | undefined
@@ -14,7 +15,9 @@ const Data: FC<DataProps> = ({ data, isFetching, isLoading }) => {
   const router = useRouter()
 
   if (isLoading || isFetching) {
-    return <Loader />
+    return <div className="absolute top-0 left-0 h-screen w-screen z-50 flex justify-center items-center">
+      <Spinner  />
+    </div>
   }
 
   if (data?.docs.length === 0) {
